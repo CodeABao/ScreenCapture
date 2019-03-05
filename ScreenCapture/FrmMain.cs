@@ -50,7 +50,7 @@ namespace ScreenCapture
             btnRecord.Enabled = true;
             btnStop.Enabled = false;
 
-            txtFileName.Text = Guid.NewGuid() + ".AVI";
+            txtFileName.Text = Guid.NewGuid() + ".mkv";
             txtOutPath.Text = AppDomain.CurrentDomain.BaseDirectory;
 
             Process[] processes = Process.GetProcessesByName("ffmpeg");
