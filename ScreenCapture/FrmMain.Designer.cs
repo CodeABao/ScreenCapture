@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnRecord = new System.Windows.Forms.Button();
@@ -44,26 +45,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 26);
+            this.label1.Location = new System.Drawing.Point(36, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "音频";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 66);
+            this.label2.Location = new System.Drawing.Point(36, 53);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "图像";
             // 
             // btnRecord
             // 
-            this.btnRecord.Location = new System.Drawing.Point(693, 209);
+            this.btnRecord.Location = new System.Drawing.Point(518, 166);
+            this.btnRecord.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRecord.Name = "btnRecord";
-            this.btnRecord.Size = new System.Drawing.Size(110, 31);
+            this.btnRecord.Size = new System.Drawing.Size(82, 25);
             this.btnRecord.TabIndex = 4;
             this.btnRecord.Text = "开始录屏";
             this.btnRecord.UseVisualStyleBackColor = true;
@@ -71,58 +75,65 @@
             // 
             // txtAudioDevice
             // 
-            this.txtAudioDevice.Location = new System.Drawing.Point(92, 20);
+            this.txtAudioDevice.Location = new System.Drawing.Point(69, 16);
+            this.txtAudioDevice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAudioDevice.Name = "txtAudioDevice";
-            this.txtAudioDevice.Size = new System.Drawing.Size(381, 25);
+            this.txtAudioDevice.Size = new System.Drawing.Size(287, 21);
             this.txtAudioDevice.TabIndex = 6;
             this.txtAudioDevice.Text = "virtual-audio-capturer";
             // 
             // txtVideoDevice
             // 
-            this.txtVideoDevice.Location = new System.Drawing.Point(91, 62);
+            this.txtVideoDevice.Location = new System.Drawing.Point(68, 50);
+            this.txtVideoDevice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtVideoDevice.Name = "txtVideoDevice";
-            this.txtVideoDevice.Size = new System.Drawing.Size(382, 25);
+            this.txtVideoDevice.Size = new System.Drawing.Size(288, 21);
             this.txtVideoDevice.TabIndex = 7;
             this.txtVideoDevice.Text = "screen-capture-recorder";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 112);
+            this.label3.Location = new System.Drawing.Point(14, 90);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 8;
             this.label3.Text = "输出目录";
             // 
             // txtOutPath
             // 
-            this.txtOutPath.Location = new System.Drawing.Point(91, 108);
+            this.txtOutPath.Location = new System.Drawing.Point(68, 86);
+            this.txtOutPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtOutPath.Name = "txtOutPath";
-            this.txtOutPath.Size = new System.Drawing.Size(382, 25);
+            this.txtOutPath.Size = new System.Drawing.Size(288, 21);
             this.txtOutPath.TabIndex = 9;
             this.txtOutPath.DoubleClick += new System.EventHandler(this.txtOutPath_DoubleClick);
             // 
             // txtFileName
             // 
-            this.txtFileName.Location = new System.Drawing.Point(91, 152);
+            this.txtFileName.Location = new System.Drawing.Point(68, 122);
+            this.txtFileName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(382, 25);
+            this.txtFileName.Size = new System.Drawing.Size(288, 21);
             this.txtFileName.TabIndex = 11;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 156);
+            this.label4.Location = new System.Drawing.Point(25, 125);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 15);
+            this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 10;
             this.label4.Text = "文件名";
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(820, 209);
+            this.btnStop.Location = new System.Drawing.Point(613, 166);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(110, 31);
+            this.btnStop.Size = new System.Drawing.Size(82, 25);
             this.btnStop.TabIndex = 12;
             this.btnStop.Text = "停止";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -130,9 +141,9 @@
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 252);
+            this.ClientSize = new System.Drawing.Size(706, 202);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.label4);
@@ -143,8 +154,11 @@
             this.Controls.Add(this.btnRecord);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
             this.Name = "FrmMain";
-            this.Text = "Form1";
+            this.Text = "屏幕录制";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
