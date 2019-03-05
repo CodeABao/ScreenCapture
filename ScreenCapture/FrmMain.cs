@@ -8,8 +8,10 @@ namespace ScreenCapture
 {
     public partial class FrmMain : Form
     {
+        [DllImport("User32.dll", EntryPoint = "PostMessageA")]
+        private static extern bool PostMessage(IntPtr hWnd, uint msg, int wParam, int lParam);
+
         private string ffmpegPath = AppDomain.CurrentDomain.BaseDirectory + "ffmpeg.exe";
-        private Process process;
 
         public FrmMain()
         {
@@ -18,44 +20,29 @@ namespace ScreenCapture
 
         private void btnRecord_Click(object sender, EventArgs e)
         {
-            new Thread((ThreadStart)delegate ()
+            btnRecord.Enabled = false;
+            btnRecord.Text = "正在录制";
+
+
+            Process process = new Process();
+
+            string ffmpgArg = "-f dshow -i video=\"" + txtVideoDevice.Text + "\":audio=\"" + txtAudioDevice.Text + "\"  -vcodec libx264 -preset:v ultrafast -tune:v zerolatency " + txtOutPath.Text + txtFileName.Text;
+            process.StartInfo = utils.GetProcessStartInfo(ffmpegPath, ffmpgArg);
+
+            process.ErrorDataReceived += Process_ErrorDataReceived;
+            process.Start();
+            process.BeginErrorReadLine();
+
+            btnStop.Enabled = true;
+
+        }
+
+        private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(e.Data))
             {
-                if (btnRecord.InvokeRequired)
-                {
-                    btnRecord.BeginInvoke(new MethodInvoker(delegate ()
-                    {
-                        btnRecord.Enabled = false;
-                        btnRecord.Text = "正在录制";
-
-                    }));
-                }
-                else
-                {
-                    btnRecord.Enabled = false;
-                    btnRecord.Text = "正在录制";
-                }
-
-                if (btnStop.InvokeRequired)
-                {
-                    btnRecord.BeginInvoke(new MethodInvoker(delegate ()
-                    {
-                        btnStop.Enabled = true;
-                    }));
-                }
-                else
-                {
-                    btnStop.Enabled = true;
-                }
-
-                process = new Process();
-
-                string ffmpgArg = "-f dshow -i video=\"" + txtVideoDevice.Text + "\":audio=\"" + txtAudioDevice.Text + "\"  -vcodec libx264 -preset:v ultrafast -tune:v zerolatency " + txtOutPath.Text + txtFileName.Text;
-                process.StartInfo = utils.GetProcessStartInfo(ffmpegPath, ffmpgArg);
-                process.Start();
-
-
-            }).Start();
-
+                Console.WriteLine(e.Data);
+            }
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -97,12 +84,11 @@ namespace ScreenCapture
                     btnStop.Enabled = false;
                 }
 
-                Thread.Sleep(10000);
-                process.StandardInput.WriteLine("q");
-                process.Close();
                 Process[] processes = Process.GetProcessesByName("ffmpeg");
                 foreach (Process p in processes)
                 {
+                    PostMessage(p.MainWindowHandle, 0x100, (int)Keys.Q, 0);
+                    Thread.Sleep(1000);
                     p.Kill();
                 }
 
